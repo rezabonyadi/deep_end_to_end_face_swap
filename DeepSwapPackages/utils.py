@@ -4,8 +4,34 @@ import os
 import cv2
 import face_recognition
 from DeepSwapPackages.image_augmentation import random_transform, random_warp
+import imageio
 
 IMAGE_SIZE = (256, 256)
+
+
+def extract_training_steps_gif(snapshots_path, gif_path, steps=1000, delay=0.5):
+    filenames = os.listdir(snapshots_path)
+    index = []
+    for filename in filenames:
+        v = float(filename.split('_')[1].split('.')[0])
+        index.append(v)
+    index = np.asarray(index)
+    args = index.argsort()
+    filenames = np.asarray(filenames)
+    filenames = filenames[args]
+    final_filenames = []
+    # with imageio.get_writer('./results/training_gif/movie.gif', mode='I') as writer:
+    for indx in range(0, filenames.shape[0], steps):
+        filename = filenames[indx]
+        image = imageio.imread(''.join([snapshots_path, '/', filename]))
+        text = ''.join(['Iteration: ', str(indx)])
+        texted_image = cv2.putText(img=np.copy(image), text=text, org=(100, 100), fontFace=3, fontScale=2,
+                                   color=(0, 0, 255), thickness=3)
+        final_filenames.append(texted_image)
+
+        # writer.append_data(image)
+    final_filenames = np.asarray(final_filenames)
+    imageio.mimsave(gif_path, final_filenames, format='GIF', duration=delay)
 
 
 def download_youtube(videourl, path, video_name):

@@ -1,4 +1,4 @@
-from DeepSwapPackages.utils import collect_faces, collect_videos
+from DeepSwapPackages.utils import collect_faces, collect_videos, extract_training_steps_gif
 from DeepSwapPackages import deep_model
 from DeepSwapPackages.utils import replace_faces
 
@@ -12,6 +12,7 @@ sample_b = './data/sample/sample_b.jpg'
 snapshots_path = './results/snapshots'
 video_input_path = './data/videos/videos_a/trump_presidency.mp4'
 video_result = './results/videos'
+gif_path='./results/training_gif/movie.gif'
 
 video_addresses_a = {'oliver_cookie.mp4': 'https://www.youtube.com/watch?v=H916EVndP_A',
                      'oliver_lorelai.mp4': 'https://www.youtube.com/watch?v=G1xP2f1_1Jg',
@@ -31,6 +32,7 @@ collect_faces(video_folder_b, videos_names_b, image_folder_b, sample_b)
 
 # model = deep_model.load_model()
 model = deep_model.train_deep_swap(image_folder_a, image_folder_b, 5000, snapshots_path)
+extract_training_steps_gif(snapshots_path, gif_path, steps=100)
 
 # replace_faces(video_input_path, sample_a, model, video_result)  # TODO: This does not work
 
