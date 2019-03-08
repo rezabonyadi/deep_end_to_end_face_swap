@@ -12,7 +12,7 @@ sample_b = './data/sample/sample_b.jpg'
 snapshots_path = './results/snapshots'
 video_input_path = './data/videos/videos_a/trump_presidency.mp4'
 video_result = './results/videos'
-gif_path='./results/training_gif/movie.gif'
+gif_path = './results/training_gif/movie.gif'
 
 video_addresses_a = {'oliver_cookie.mp4': 'https://www.youtube.com/watch?v=H916EVndP_A',
                      'oliver_lorelai.mp4': 'https://www.youtube.com/watch?v=G1xP2f1_1Jg',
