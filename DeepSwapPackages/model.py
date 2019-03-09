@@ -8,7 +8,9 @@ from DeepSwapPackages.pixel_shuffler import PixelShuffler
 
 optimizer = Adam( lr=5e-5, beta_1=0.5, beta_2=0.999 )
 
-IMAGE_SHAPE = (64,64,3)
+IMAGE_SIZE = 64
+IMAGE_SHAPE = (IMAGE_SIZE,IMAGE_SIZE,3)
+
 # IMAGE_SHAPE = (128,128,3)
 
 ENCODER_DIM = 1024
