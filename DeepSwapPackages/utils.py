@@ -64,13 +64,16 @@ def is_the_wanted_face(crop_img, known_encoding):
     return results[0]
 
 
-def extract_faces(count, image, save_path, known_image_model, folder_indx):
+def extract_subject_faces(count, image, save_path, known_image_model, folder_indx):
     rgb_frame = image[:, :, ::-1]
     face_locations = face_recognition.face_locations(rgb_frame, model='hog')
     for top, right, bottom, left in face_locations:
         crop_img = image[top:bottom, left:right]
         cp_name = ''.join([save_path, '/cp_frame%d_%d' % (folder_indx, count), '.jpg'])
         if (known_image_model is not None) and (is_the_wanted_face(crop_img, known_image_model)):
+            resized_image = cv2.resize(crop_img, IMAGE_SIZE)
+            cv2.imwrite(cp_name, resized_image)
+        if (known_image_model is None):
             resized_image = cv2.resize(crop_img, IMAGE_SIZE)
             cv2.imwrite(cp_name, resized_image)
 
@@ -94,7 +97,7 @@ def face_capture(video_path, save_path, sample_image, folder_indx):
         success, image = vidObj.read()
         if not success:
             break
-        extract_faces(count, image, save_path, known_encoding, folder_indx)
+        extract_subject_faces(count, image, save_path, known_encoding, folder_indx)
         count += 1
 
 

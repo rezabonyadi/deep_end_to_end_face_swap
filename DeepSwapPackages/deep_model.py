@@ -6,7 +6,7 @@ from DeepSwapPackages.utils import get_image_paths, load_images, stack_images, g
 from DeepSwapPackages.model import autoencoder_A
 from DeepSwapPackages.model import autoencoder_B
 from DeepSwapPackages.model import encoder, decoder_A, decoder_B
-
+import os
 
 def load_model():
     try:
@@ -19,6 +19,9 @@ def load_model():
 def train_deep_swap(data_a, data_b, max_epochs, snapshots_path):
 
     load_model()
+
+    if not os.path.exists(snapshots_path):
+        os.makedirs(snapshots_path)
 
     def save_model_weights():
         encoder.save_weights("models/encoder.h5")
