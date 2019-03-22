@@ -33,9 +33,13 @@ This uses face_recognition in python
 For windows:
 
 conda install numpy
+
 conda install scipy
+
 conda install -c conda-forge dlib
 
 conda install cmake
+
 install msys (https://www.msys2.org/, may necessary)
+
 pip install face_recognition
