@@ -12,8 +12,8 @@ The whole method works as follow:
 * Find the faces that of subjects for which the samples provided (face recognition) 
 * Put the faces in two folders, each for each subject, with an standard size (256 by 256)
 * Train one encoder and two decoders, 
-** the encoder accepts images from any of the subjects
-** each decoder decodes the faces of each subject
+ * the encoder accepts images from any of the subjects
+ * each decoder decodes the faces of each subject
 * Save the iterations into snapshots
  Build a gif file of the iterations (a sample included in the results/training_gif)
 
