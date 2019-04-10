@@ -28,6 +28,7 @@ For windows:
 * conda install scipy
 * conda install -c conda-forge dlib
 * conda install cmake
-* install msys (https://www.msys2.org/, may necessary)
+* install msys (https://www.msys2.org/, maybe necessary)
 * pip install face_recognition
+* conda install opencv
 * conda install -c conda-forge youtube-dl
