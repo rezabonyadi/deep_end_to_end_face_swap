@@ -32,3 +32,9 @@ For windows:
 * pip install face_recognition
 * conda install opencv
 * conda install -c conda-forge youtube-dl
+
+Here is a summary of the whole process:
+
+
+
+![Capture](https://user-images.githubusercontent.com/25924343/90969971-7a427780-e542-11ea-8b92-e6ed77284bc8.PNG)
